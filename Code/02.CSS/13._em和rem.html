@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+        /* 
+        百分比：
+        - 可以将属性值设置为相对于其父元素的百分比
+        （可以使子元素根据其父元素改变而改变） 
+        */
+        .box2{
+            width: 50%;
+            height: 50%;
+            background-color:orange;
+        }
+
+        /* 
+        em：根据自身字体大小而改变：
+          例如 10em = 10*font-size
+
+        rem：相对于根元素（html{font-size:10px;}）的字体大小计算
+        */
+        .box3{
+            font-size: 20px;
+            width: 10em;
+            height: 10em;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+    <div class="box3"></div>
+</body>
+</html>

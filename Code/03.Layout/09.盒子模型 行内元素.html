@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        行内元素：
+        - 不支持设置width和height，宽高是被内容撑开的
+        - padding：可以设置。但是垂直方向的padding不会影响布局(上面不生效)
+        - border: 可以设置。但是垂直方向的padding不会影响布局(上面不生效)
+        - margin: 可以设置。但是垂直方向的padding不会影响布局(上下不生效)
+        垂直方向下面的元素不会被挤压。
+
+        a标签：
+        本身不能设置宽高。
+        - 行内元素变成款元素：
+            display属性
+            1. inline  行内元素
+            2. block   块元素 - 独占一行，可以设置宽高
+            3. inline-block  行内块元素 - 不独占一行，但可以设置宽高（尽量不用）
+               两个元素之间会有换行
+            4. table   表格
+            5. none    不显示在页面中，也不会占位（特殊状态时可以显示）
+        - visibility
+            显示状态
+            1. visible  默认，正常显示
+            2. hidden   隐藏。页面中不显示，但是占位
+
+        */
+        a{
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            background-color: blue;
+        }
+        .s1{
+            background-color: aqua;
+            padding-bottom: 20px;
+            border-bottom: 20px red solid;
+            margin-bottom: 100px;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+<body>
+    <span class="s1">我是span</span>
+    <a href="">link here</a>
+    <div class="box1"></div>
+</body>
+</html>

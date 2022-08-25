@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        水平方向位置：
+            元素在其父元素中，位置由以下几个属性共同决定：
+                margin-left
+                border-left
+                padding-left
+                width
+                padding-right
+                border-right
+                margin-right
+            水平布局需要满足以下等式：                
+                margin-left+border-left+padding-left+width+padding-right+
+                border-right+margin-right = 其父元素内容区的宽度（width）
+                如果等式不满足，浏览器会自动调整：
+                    - 在没有auto的情况下，会自动调整margin-right使等式成立
+                    - 其中有三个值可以设置为auto(width,margin-left,margin-right)，那么自动调整auto的值使等式成立
+                    - 如果width和其中一个边距是auto，则会默认width调整到最大，auto的边距会调整为0
+                    - 如果两个边距都是auto，width为固定值，则会调整两个边距相等（居中）
+                        实例：width=xxxpx;
+                             margin:0 auto;
+
+        */
+        .outer{
+            width: 800px;
+            height: 200px;
+            border: 10px red solid;
+        }
+        .inner{
+            /* width的值默认是auto */
+            width: auto;
+            height: 200px;
+            background-color: aqua;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

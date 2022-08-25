@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        img标签：自结束标签
+            替换元素 - 既有行内元素的特性，也有块元素的特性
+               img被link里面的内容所替换
+             引入外部图片
+        src属性：link
+        alt属性：对图片的描述
+            有些浏览器会在图片无法加载时显示
+            搜索引擎会根据alt的内容进行搜索
+        weight属性：宽度（默认单位是像素）
+        height属性：高度
+            - 如果只修改其中一个，会自动按等比例缩放
+            - pc端：一般不建议修改大小，需要多大裁多大
+              移动端：常用大图进行缩小
+        
+        格式：
+            jpeg=jpg：支持颜色丰富。不支持透明效果。不支持动图
+                多用来显示照片。可以压缩。
+            gif：支持严肃较少，支持简单透明，支持动图
+                用来表示颜色单一的图片，和动图
+            png：支持颜色丰富。支持复杂透明效果。不支持动图
+                颜色丰富，复杂透明图片（为专业而生）
+            webp：谷歌新推出的，专门用来网页中的土拍你的而一种格式。
+                颜色丰富，支持透明，支持动图，而且小。
+                缺点：兼容性不好
+            base64：对图片进行编码，这样图片会转换为字符
+                - 用于需要和网页一起加载的图片
+            
+            选择：效果一样，用小的
+                 效果不一样，用好的
+    -->
+    <img src="./img/1.gif" alt="iron man">
+</body>
+</html>
