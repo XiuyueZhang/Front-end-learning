@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 24px;
+        }
+
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+        }
+
+        .box4{
+            width: 400px;
+            height: 400px;
+            background-color: tomato;
+            position: relative;
+        }
+
+        .box5{
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+        }
+
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            position: absolute;
+            left: 0;
+            top:0;
+        }
+
+        .box3{
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+        }
+
+        /* position
+        绝对定位 absolute
+           - 特点：
+           1. 开启绝对定位以后，如果不设置offset，就不会改变元素的位置。
+           2. 开启之后，元素会从文档流中脱离。
+           3. 开启之后，会改变元素的性质
+            inline -> block
+            行内变成快，宽高被内容撑开。
+           4. 绝对定位会使元素提升一个层级。
+           5. 绝对定位元素相对其包含块进行定位。
+            包含块：containing block
+                1. 文档流里面的元素（普通元素）
+                   包含块就是离当前元素最近的祖先块元素
+                2. 开启绝对定位的元素
+                   包含块就是离当前元素最近的开启定位的祖先元素
+                      如果所有祖先元素都没有开启定位，则相对于根元素进行定位
+                        根元素 html - 初始包含块
+
+        偏移量：offset
+
+
+
+        */
+    </style>
+</head>
+<body>
+    <div class="box1">1</div>
+    <div class="box4">4
+        <div class="box5">5
+            <div class="box2">2</div>
+        </div>
+    </div>
+    <div class="box3">3</div>
+</body>
+</html>

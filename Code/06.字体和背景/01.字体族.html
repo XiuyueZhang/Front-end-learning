@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 字体相关的样式
+        color：设置字体颜色（前景色）、
+        font-size: 字体大小
+            相关单位：
+            em：当前元素的一个font-sizze
+            rem：根元素的一个font-size
+        font-family
+            五个类别可选值：- 指定字体类别，浏览器惠自动使用该类别下的字体
+                serif：衬线字体
+                sans-serif：非衬线字体
+                monospace：等宽字体
+                cursive：草书字体
+                fantasy：虚幻字体
+            可以设置多个值
+            中文通用：
+            tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif
+
+        提供可使用字体：
+        @font-face：将服务器上的字体提供给用户
+        {
+            font-family: 自定义字体名字;
+            src: url(字体存放的路径);
+        }
+        使用时：
+        font-family:my_font
+
+            也可以提供多个字体。
+
+        注意：加载速度问题
+              版权问题
+
+        */
+        @font-face {
+            font-family: my_font;
+            src: url('./font/abc.ttf') format("truetype");
+            /* 
+            可选值：
+                format(woff)
+                format(woff2) 
+            */
+        }
+
+        p {
+            font-size: 40px;
+            color: red;
+            font-family: cursive;
+            /* font-family可以同时指定多个字体。多个字体中间用都好隔开，
+            优先使用第一个，如果没有使用第二个，再没有从第三个的类别里面选字体 */
+            font-family:'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        Hello Hello 今天天气真好！
+    </p>
+</body>
+</html>

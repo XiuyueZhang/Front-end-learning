@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            font-size: 50px;
+            /* text-decoration: 设置文本修饰 
+            可选值：
+                none：默认值
+                underline:下划线
+                overline：上划线
+                line-through：删除线
+            */
+            text-decoration:underline red dotted;
+            border: 1px red solid;
+        }
+
+        .box2{
+            /* white-space: 设置如何处理空白
+                可选值：
+                    normal：默认值，自动换行
+                    nowrap：不换行，滚动条
+                    pre:保留空白
+                省略号：
+                    white-space:nonwrap;
+                    width:200px;
+                    overflow:hidden;
+                    text-overflow:ellipsis   溢出内容显示省略号
+            */
+            white-space:nowrap;
+            width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <div class="box2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam excepturi omnis deleniti, vel qui corporis ipsam saepe mollitia laudantium dolorem, libero aperiam porro esse assumenda earum a voluptatibus quia inventore.
+    </div>
+
+    <div class="box1">
+        今天天气真不错
+    </div>
+</body>
+</html>

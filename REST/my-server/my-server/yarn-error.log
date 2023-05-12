@@ -1,0 +1,36 @@
+Arguments: 
+  D:\ISO\NodeJS\node.exe C:\Users\OEM\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js init
+
+PATH: 
+  C:\Users\OEM\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\OEM\AppData\Local\Programs\Python\Python311\;C:\Windows\System32;C:\Program Files\dotnet\;C:\ProgramData\chocolatey\bin;D:\Git\cmd;D:\Git\mingw64\bin\;D:\ISO\NodeJS\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Program Files (x86)\Google\Chrome\Application;D:\ISO\VS Code\Microsoft VS Code\bin;C:\Users\OEM\AppData\Roaming\npm
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (C:\Users\OEM\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:137150:13)
+      at Interface.emit (node:events:513:28)
+      at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1131:18)
+      at ReadStream.onkeypress (node:internal/readline/interface:270:20)
+      at ReadStream.emit (node:events:513:28)
+      at emitKeys (node:internal/readline/utils:357:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
+      at ReadStream.emit (node:events:513:28)
+      at addChunk (node:internal/streams/readable:324:12)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

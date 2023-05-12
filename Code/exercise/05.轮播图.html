@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../02.CSS/reset.css">
+    <style>
+        .img-list{
+            width: 450px;
+            height: 440px;
+            position: relative;
+        }
+
+        .img-list li{
+            position: absolute;
+        }
+
+        .points{
+            position: absolute;
+            bottom: 40px;
+            left: 30px;
+            /* 点必须在最上面 */
+            z-index: 9999;
+        }
+
+        .points a{
+            /* display: block; */
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin-right: 4px;
+            float: left;
+            /* 背景颜色只设置到内容区，边框和内边距不再有颜色 */
+            background-clip:content-box;
+            border: 2px solid transparent;
+        }
+
+        .points a.active,
+        .points a:hover{
+            background-color:#fff;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+    </style> 
+</head>
+<body>
+    <ul class="img-list">
+        <li>
+            <a href="javascript:;"><img src="rotate1.JPG" alt=""></a>
+        </li>
+        <li>
+            <a href="#"><img src="rotate2.JPG" alt=""></a>
+        </li>
+        <li>
+            <a href="#"><img src="rotate3.JPG" alt=""></a>
+        </li>
+
+        <div class="points">
+            <a href="" class="active"></a>
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+        </div>
+    </ul>
+</body>
+</html>

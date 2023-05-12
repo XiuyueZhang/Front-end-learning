@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        表单：用于提交数据
+             用于将本地的数据提交给服务器。
+        创建表单：form
+
+     -->
+     <!-- 
+        form的属性：
+            action：必须。指定表单要提交的地址。
+      -->
+     <form action="target.html">
+        <!-- 添加表单项
+            1. input
+                text：文本框
+                    数据要提交到服务器，必须有一个name值。
+                submit：提交按钮  
+                password:密码框
+                radio：单选框
+        -->
+        <input type="text" name="username">
+        <!-- 提交按钮
+            type：指定类型
+            value: 指定显示文字
+        -->
+        <input type="submit" value="momoda">
+
+        <!-- 密码框 -->
+        <input type="password" name="password">
+
+        <!-- 单选按钮：几个具有相同name的按钮只能选择其一。
+        - 选择框，必须有value属性，作为用户选择的值传递给服务器。
+        checked: 设置默认选中的状态。
+        -->
+        A<Input type="radio" name="gender" value="Male">
+        B<input type="radio" name="gender" value="Female" checked>
+
+        <!-- 
+            多选框：
+         -->
+         <input type="checkbox" name="test" value="a">
+         <input type="checkbox" name="test" value="b">
+         <input type="checkbox" name="test" value="c" checked>
+
+         <!-- 下拉列表
+        name属性：
+        selected：默认选中
+         -->
+         <select name="lele" id="">
+            <option value="red">Red</option>
+            <option value="green" selected>Green</option>
+            <option value="blue">Blue</option>
+         </select>
+    </form>
+</body>
+</html>

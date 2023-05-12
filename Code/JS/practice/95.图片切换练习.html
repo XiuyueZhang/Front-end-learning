@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer{
+            width: 480px;
+            margin: 50px auto;
+            padding: 10px;
+            background-color: greenyellow;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            // 点击按钮切换图片
+
+            // 保存三个图片路径
+            var urls = ["/exercise/rotate1.JPG", "/exercise/rotate2.JPG", "/exercise/rotate3.JPG"];
+
+            //现在显示图片的index
+            var index = 0;
+
+            // 获取按钮
+            var prev_button = document.getElementById("prev");
+            var next_button = document.getElementById("next");
+
+            // 切换图片 - 修改img.src
+            // 获取img标签 - 类数组
+            var img = document.getElementsByTagName("img")[0];
+            var p = document.getElementsByTagName("p")[0];
+
+
+            prev_button.onclick = function(){
+                index--;
+                if(index < 0){
+                    index = urls.length-1
+                }
+                
+                img.src = urls[index];
+                p.innerHTML = "total "+(urls.length)+" pictures, this is the no "+(index+1);
+
+            }
+
+            next_button.onclick = function(){
+                index++;
+                if(index > urls.length-1){
+                    index = 0;
+                }
+
+                img.src = urls[index];
+                p.innerHTML = "total "+(urls.length)+" pictures, this is the no "+(index+1);
+            }
+        };
+
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <p></p>
+        <img src="/exercise/rotate1.JPG" alt="">
+
+        <button id="prev">previous</button>
+        <button id="next">next</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 24px;
+        }
+
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+        }
+
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            position: relative;
+            left: 200px;
+            top:-200px;
+        }
+
+        .box3{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+
+        /* 定位：是一种更加高级的布局手段
+            通过定位，可以将元素把放到页面的任意位置。
+            使用position属性设置。
+            可选值：
+            static 默认值  元素是静止的，没有开启定位
+            relative 相对定位  
+            absolute 绝对定位
+            fixed 固定定位
+            sticky 粘滞定位
+        */
+
+        /* 
+        相对定位 relative
+           - 特点：
+           1. 元素开启相对定位之后，如果不设置偏移量，元素不会发生任何变化。
+           2. 偏移量offset  通过offset来设置元素的位置
+              top botoom：定位垂直位置，通常只用其中之一
+              left right：定位水平位置
+           3. 相对位置是相对于元素在文档流中的位置
+           4. 相对定位会提高元素的层级，会高于其他文档流中的元素。
+           5. 相对定位不会使元素脱离文档流
+           6. 相对定位不会改变元素的性质（inline，block）
+        参照物：
+        元素在文档流中的位置
+
+        */
+    </style>
+</head>
+<body>
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+</body>
+</html>

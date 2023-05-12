@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+            position: relative;
+        }
+
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: tomato;
+            position: absolute;
+            
+            /* 实现居中效果 */
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+
+        /* 
+        水平布局：
+        margin-left + border-left + padding-left + width + padding_right + border-right + margin-right = 包含块内容区的width
+        
+        开启绝对定位之后：
+        水平方向的布局等式需要增加 left + right
+            此时规则和之前一样，只是多添加了两个值。
+            规则：当发生过度约束时，
+                 如果九个值中没有auto，则自动调整right值以满足等式
+                 如果有auto，则调整auto值满足等式
+                 可以设置auto的：
+                    margin, width, left, right
+                    left和right默认是auto。如果不指定，会自动调整。
+
+        垂直布局：开启绝对定位后，要强制等式满足。
+        top + margin-top + border+top + padding-top +height + padding-bottom + border-bottom + margin-bottom + bottom = 包含块的内容区的height
+        
+        注意：必须在开启绝对定位之后才可以强制垂直方向等式满足。
+        */
+
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+</body>
+</html>

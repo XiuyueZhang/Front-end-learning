@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../02.CSS/reset.css">
+    <link rel="stylesheet" href="../06.字体和背景/font awasome/css/all.css ">
+    <style>
+        .navi{
+            width: 100%;
+            /* 设置文字垂直居中 */
+            height: 30px;
+            line-height: 30px;
+            background-color: #E3E4E5;
+            position: relative;
+        }
+
+        .content{
+            width: 1190px;
+            font-size: 14px;
+            font-family: 'Times New Roman', Times, serif;
+            color: grey;
+            /* 居中 */
+            margin:0 auto;
+            position: relative;
+        }
+
+        .content a{
+            text-decoration: none;
+            color:gray;
+        }
+
+        .content a.highlight,
+        .content a:hover{
+            color: red;
+        }
+
+        .content .line{
+            width: 1px;
+            height: 10px;
+            background-color: grey;
+            margin:10px 12px;
+        }
+
+        .left,
+        .left li{
+            float: left;
+        }
+
+        .left li{
+            padding-right: 5px;
+            padding-left: 5px;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .left li{
+            border: 1px rgb(204,204,204) solid;
+            border-bottom: none;
+        }
+
+        .left li i{
+            font-size: 12px;
+            color:darkred;
+            margin-right: 5px;
+        }
+
+        .location{
+            width: 320px;
+            height: 436px;
+            background-color:white;
+            border: 1px solid rgb(204,204,204);
+            /* 设置绝对定位，使其不占福原副位置 */
+            position: absolute;
+            top: 30px;
+            /* 隐藏 */
+            display: none;
+            /* 设置阴影 */
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+
+        /* 鼠标移入父元素，显示子元素.location */ 
+        .left:hover .location{
+            display: block;
+        } 
+
+
+        .right{
+            float: right;
+        }
+
+        .right li{
+            float: left;
+        }
+
+        .right i{
+            font-size: 8px;
+            vertical-align: middle;
+            margin-right: 2px;
+        }
+
+        .content li:hover{
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navi">
+        <div class="content">
+            <ul class="left">
+                <li>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <a href="">Beijing</a>
+                </li>
+
+                <!-- location list -->
+                <div class="location"></div>
+
+            </ul>
+
+
+            <ul class="right">
+                <li>
+                    <a href="#">Sign up</a>
+                    <a class="highlight" href="#">Log in</a>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <a href="#">My order</a>
+                </li> 
+                <li class="line"></li>
+                <li>
+                    <a href="#">My JD</a>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <a href="#">Member</a>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <a class="highlight" href="#">Enterprise</a>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <a href="#">Service</a>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <span>Navigation</span> 
+                    <i class="fa-solid fa-chevron-down"></i>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <span>Mobile</span> 
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

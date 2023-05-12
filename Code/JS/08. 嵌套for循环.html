@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        use strict;
+        // *****
+        // *****
+        // *****
+        // *****
+        // *****
+        // for(var i = 1, str="*****"; i<=5; i++){
+        //     document.write(str+"<br>");
+        // }
+
+        // *
+        // **
+        // ***
+        // ****
+        // *****
+        // for(var i = 1, str=""; i<=5; i++){
+        //     str+="*";
+        //     document.write(str+"<br>");
+        // }
+
+        // for(var i=0; i<5; i++){
+        //     for(var j=0; j<i+1; j++){
+        //         document.write("*");
+        //     };
+        //     document.write("<br>");
+        // }   
+
+
+        // *****
+        // ****
+        // ***
+        // **
+        // *
+        // for(var i=0; i<5; i++){
+        //     for(var j=0; j<5-i; j++){
+        //         document.write("*")
+        //     };
+        //     document.write("<br>");
+        // }
+
+        // for(var i=0; i<5; i++){
+        //     for(var j=0; j<5-i; j++){
+        //         document.write("*")
+        //     };
+        //     document.write("<br>");
+        // }
+
+        // 九九乘法表
+        // for(var i=1; i<10; i++){
+        //     for(var j=1; j<i+1; j++){
+        //         document.write(`<span>${j}*${i}=${i*j}</span>`)
+        //     };
+        //     document.write("<br>");
+        // }
+        
+        // 1-100之间的质数
+
+        var flag = true;
+
+        for(var i=3; i<=100; i++){
+            // 判断是否是质数
+            for(var j=2; j<i; j++){
+                if(i % j == 0){
+                    flag = false;
+                };
+            };
+
+            if(flag){
+                document.write(i+"<br>");
+            };
+        };
+
+        
+    </script>
+    <!-- <style>
+        span{
+            width: 80px;
+            display: inline-block;
+        }
+    </style> -->
+</head>
+<body>
+    
+</body>
+</html>

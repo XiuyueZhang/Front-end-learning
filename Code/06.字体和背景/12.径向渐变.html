@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 300px;
+            height: 300px;
+            background-color: aquamarine;
+
+
+            /* 
+            径向渐变：放射性效果
+                默认情况下渐变的形状根据元素的形状来计算的。
+                1. 形状
+                正方形 -> 圆形
+                长方形 -> 椭圆形
+                - 也可以手动指定渐变的大小。
+                background-image: radial-gradient(100px 100px, red,yellow);
+                重复效果：repeating-radial-gradient(100px 100px, red,yellow);
+
+                可选值：
+                   circle：圆形
+                   ellipse：椭圆
+
+                2.位置
+                   at 0 0 
+                   at top left 
+                3. closest-side, farthest-side
+                   closest-side 离近的边停止渐变
+                   farthest-side 到远边停止渐变
+                   cloest-corner
+                   farthest-corner
+            
+            语法：
+            background-image: radial-gradient(大小 at 位置, 颜色 位置，颜色 位置...)
+                大小：
+                    circle, ellipse
+                    closest-side
+                    farthest-side
+                    cloest-corner
+                    farthest-corner
+                    100px 100px
+                位置：
+                    at top left
+                    at 100px 100px
+
+            */
+            background-image: radial-gradient(farthest-side at 100px 100px, red,yellow);
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+</body>
+</html>

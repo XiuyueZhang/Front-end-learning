@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+</head>
+<body>
+    <div id="root">
+        <h2>Please log in</h2>
+        <form>
+            <div>
+                <input type="text" id="username">
+            </div>
+            <div>
+                <input type="password" id="password">
+            </div>
+            <div>
+                <button id="login-btn" type="button">log in</button>
+            </div>
+  
+        </form>
+    </div>
+
+
+    <script>
+        //click on login-btn, then log in
+        const login_btn = document.getElementById("loginBtn")
+        const root = document.getElementById("root")
+        
+
+        // check if the user is in a login sttus
+        if(localStorage.getItem("nickname")){
+            // use has already logged in
+            root.innerHTML = `
+                        <h1>Welcome back, ${localStorage.getItem("nickname")}</h1>
+                        <button id="load-btn">Load data</button>
+                    `
+        }else{
+            loginBtn.onclick = ()=>{
+            // get user input
+            const username = document.getElementById("username").value.trim()
+            const password = document.getElementById("password").value.trim()
+
+            //send to the server
+            fetch("http://localhost:9000/login",{
+                method:"post",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify({username, password})
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                //if status === ok
+                if(res.status === "ok"){
+                    // login success - setItem to localStorage
+                    localStorage.setItem("usernmae", res.data.username)
+                    localStorage.setItem("id", res.data.id)
+                    localStorage.setItem("nickname", res.data.nickname)
+                    root.innerHTML = `
+                        <h1>Welcome back, ${res.data.nickname}</h1>
+                        <button id="load-btn">Load data</button>
+                    `
+                }else{
+                    throw new Error("username or password incorrect")
+                }
+            })
+            .catch((err) =>
+                console.log(err)
+            )
+            
+        }
+        }
+
+        
+    </script>
+
+    
+</body>
+</html>

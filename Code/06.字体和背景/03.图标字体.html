@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font awasome/css/all.css ">
+    <style>
+        *{
+            list-style: none;
+        }
+
+        li::before{
+            content: "\f6be";
+            font-family: 'Font Awesome 5 Brands';
+            font-display: block;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <!-- 类的方式引入iconfont -->
+    <i class="fas fa-cat"></i>
+    <!-- 实体加iconfont的方法：&#xunicode编码； -->
+    <span class="fas">&#xf6be;</span>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</body>
+</html>
