@@ -1,31 +1,10 @@
-import { Button, Checkbox, Form, Input, message } from 'antd';
-import { useStore } from '@/store'
-import { useNavigate } from 'react-router-dom'; 
+import { Button, Checkbox, Form, Input } from 'antd';
 
 function Login() {
 
-    const { loginStore } = useStore()
-    const navigate = useNavigate()
-
-    const onFinish = async (values) => {
+    const onFinish = (values) => {
         console.log('Success:', values);
-
-        try{
-            await loginStore.getToken({
-                mobile: values.username,
-                code: values.password
-            })
-            // 跳转首页
-            navigate('/')
-            // 提示：登录成功
-            message.success('Login successful')
-        } catch(e){
-            message.erro(e.response?.data?.message || "Login failed")
-        }
-
-        
     };
-
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
@@ -33,8 +12,8 @@ function Login() {
     return (
         <div className="login" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '100px' }}>
             <div className='login-container'>
-                <h2 style={{ display: 'flex', justifyContent: 'center', padding: '30px' }}>Please log in</h2>
-                <Form
+                <h2 style={{ display: 'flex', justifyContent: 'center', padding: '30px'}}>Please log in</h2>
+                <Form validateTrigger={['onBlur',]}
                     name="basic"
                     labelCol={{
                         span: 8,
@@ -72,9 +51,10 @@ function Login() {
                             {
                                 required: true,
                                 message: 'Please input your password!',
-                            }, {
+                            },{
                                 len: 6,
-                                message: 'password must at least 6 characters'
+                                message: 'password must at least 6 characters',
+                                validateTrigger: 'onblur'
                             },
                         ]}
                     >

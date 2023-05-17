@@ -1,29 +1,21 @@
-import { Button, Checkbox, Form, Input, message } from 'antd';
+import { Button, Checkbox, Form, Input } from 'antd';
 import { useStore } from '@/store'
-import { useNavigate } from 'react-router-dom'; 
 
 function Login() {
 
     const { loginStore } = useStore()
-    const navigate = useNavigate()
 
-    const onFinish = async (values) => {
+    const onFinish = (values) => {
         console.log('Success:', values);
 
-        try{
-            await loginStore.getToken({
+        try {
+            loginStore.getToken({
                 mobile: values.username,
                 code: values.password
             })
-            // 跳转首页
-            navigate('/')
-            // 提示：登录成功
-            message.success('Login successful')
-        } catch(e){
-            message.erro(e.response?.data?.message || "Login failed")
+        } catch (e) {
+            message.error(e.response?.data?.message || '登录失败')
         }
-
-        
     };
 
     const onFinishFailed = (errorInfo) => {
