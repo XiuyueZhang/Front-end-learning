@@ -10,10 +10,10 @@ function Login() {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '100px' }}>
-            <div>
+        <div className="login" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '100px' }}>
+            <div className='login-container'>
                 <h2 style={{ display: 'flex', justifyContent: 'center', padding: '30px'}}>Please log in</h2>
-                <Form
+                <Form validateTrigger={['onBlur',]}
                     name="basic"
                     labelCol={{
                         span: 8,
@@ -51,6 +51,10 @@ function Login() {
                             {
                                 required: true,
                                 message: 'Please input your password!',
+                            },{
+                                len: 6,
+                                message: 'password must at least 6 characters',
+                                validateTrigger: 'onblur'
                             },
                         ]}
                     >
