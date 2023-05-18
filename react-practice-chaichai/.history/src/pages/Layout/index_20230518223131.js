@@ -44,14 +44,12 @@ const Homepage = () => {
             display: 'relative',
 
           }}>
-          <div className='header-ul'>
-            <span className='user-name'>user.name</span>
-            <span className='user-logout'>
-              <Popconfirm title="Do you confirm to log out?" okText="Logout" cancelText="cancel">
-                <LogoutOutlined /> Log out
-              </Popconfirm>
-            </span>
-          </div>
+          <span className='user-name'>user.name</span>
+          <span className='user-logout'>
+            <Popconfirm title="Do you confirm to log out?" okText="Logout" cancelText="cancel">
+              <LogoutOutlined/> Log out
+            </Popconfirm>
+          </span>
         </Header>
         <Content className='content'>
           <Breadcrumb className='breadcrumb'>

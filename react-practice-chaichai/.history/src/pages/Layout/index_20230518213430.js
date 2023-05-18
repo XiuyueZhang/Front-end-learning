@@ -1,5 +1,5 @@
-import { FileOutlined, PieChartOutlined, UserOutlined, DesktopOutlined, TeamOutlined, LogoutOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme, Popconfirm } from 'antd';
+import { FileOutlined, PieChartOutlined, UserOutlined, DesktopOutlined, TeamOutlined } from '@ant-design/icons';
+import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
 import './index.scss'
 
@@ -33,7 +33,7 @@ const Homepage = () => {
   return (
     <Layout className='container'>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div className='demo-logo-vertical' />
+        <div className='demo-logo-vertical'/>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
       </Sider>
       <Layout>
@@ -41,18 +41,9 @@ const Homepage = () => {
           style={{
             padding: 0,
             background: colorBgContainer,
-            display: 'relative',
-
           }}>
-          <div className='header-ul'>
-            <span className='user-name'>user.name</span>
-            <span className='user-logout'>
-              <Popconfirm title="Do you confirm to log out?" okText="Logout" cancelText="cancel">
-                <LogoutOutlined /> Log out
-              </Popconfirm>
-            </span>
-          </div>
-        </Header>
+            <HeadContent>username  Logout</HeadContent>
+          </Header>
         <Content className='content'>
           <Breadcrumb className='breadcrumb'>
             <Breadcrumb.Item>User</Breadcrumb.Item>
