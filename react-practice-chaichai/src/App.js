@@ -1,9 +1,12 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login'
-import Layout from '@/pages/Layout'
+import Navi from '@/pages/Layout'
 import 'antd/dist/reset.css';
 import {AuthComponent} from '@/components/AuthComponent'
+import Publish from './pages/Publish';
+import Article from './pages/Article';
+import Home from './pages/Home';
 
 
 
@@ -17,9 +20,13 @@ function App() {
           {/* 需要鉴权组件layout */}
           <Route path='/' element={
             <AuthComponent>
-              <Layout />
+              <Navi />
             </AuthComponent> 
-          }></Route>
+          }>
+            <Route index element={<Home />}></Route>
+            <Route path='article' element={<Article />}></Route>
+            <Route path='publish' element={<Publish />}></Route>
+          </Route>
           <Route path='/login' element={<Login />}></Route>
         </Routes>
       </div>
