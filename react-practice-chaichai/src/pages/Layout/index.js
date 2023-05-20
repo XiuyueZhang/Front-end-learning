@@ -2,9 +2,8 @@ import { DiffOutlined, EditOutlined, LogoutOutlined, HomeOutlined } from '@ant-d
 import { Layout, Menu, theme, Popconfirm } from 'antd';
 import { useState, useEffect } from 'react';
 import './index.scss'
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useStore } from '@/store';
-import UserStore from '@/store/user.Store';
 import { observer } from 'mobx-react-lite';
 
 
@@ -13,19 +12,30 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const Navi = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate()
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
   const { pathname } = useLocation()
   // 执行副作用：调用接口请求
-  const { userStore } = useStore()
+  const { userStore, loginStore } = useStore()
   useEffect(() => {
     const getUserInfo = async () => {
-      await userStore.getUserInfo()
-    }
-  },[userStore]) 
-  
+      await userStore.getUserInfo();
+    };
+
+    getUserInfo();
+  }, [userStore]);
+
+  const confirm = (e) => {
+    console.log(e);
+    // 删除token，跳转登录
+    loginStore.clearToken()
+    navigate('/login')
+  };
+
+
 
 
   return (
@@ -59,9 +69,13 @@ const Navi = () => {
 
           }}>
           <div className='header-ul'>
-            <span className='user-name'></span>
+            <span className='user-name'>{userStore.userInfo.name}</span>
             <span className='user-logout'>
-              <Popconfirm title="Do you confirm to log out?" okText="Logout" cancelText="cancel">
+              <Popconfirm
+                title="Do you confirm to log out?"
+                okText="Logout"
+                cancelText="cancel"
+                onConfirm={confirm}>
                 <LogoutOutlined /> Log out
               </Popconfirm>
             </span>

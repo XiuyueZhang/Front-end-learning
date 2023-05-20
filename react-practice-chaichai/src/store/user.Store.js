@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx"
 import { http } from '@/utils'
 
 class UserStore{
-    userIngo = {}
+    userInfo = {}
     constructor(){
         makeAutoObservable(this)
     }
