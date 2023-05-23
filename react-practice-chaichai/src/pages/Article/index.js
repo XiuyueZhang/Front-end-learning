@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Card, Breadcrumb, Form, Button, Radio, DatePicker, Select } from 'antd'
 import './index.scss'
 import { Table, Tag, Space } from 'antd'
@@ -45,22 +45,47 @@ const Article = () => {
             })
         }
         loadArticleList()
-    },[params])
+    }, [params])
+
+    const pageChange = (page) => {
+        console.log(params);
+        setParams({
+            ...params,
+            page: page
+        });
+    }
+
+    // delete article
+    const delArticle = async (data) => {
+        await http.delete(`/mp/articles/${data.id}`)
+        // refresh article list
+        setParams({
+            ...params,
+            page: 1
+        })
+    }
+
+    // edit article
+    const navigate = useNavigate()
+    const redirectArticle = (data) => {
+        navigate(`/publish?${data.id}`)
+    }
+
 
     const onFinish = (values) => {
         console.log(values)
         // 用新的搜索条件更新params，重新发送get请求
         const _params = {}
-        const {channel_id, date, status} = values
-        if(status !== -1){
+        const { channel_id, date, status } = values
+        if (status !== -1) {
             _params.status = status
         }
-        if(date){
+        if (date) {
             // format date
             _params.begin_pubdate = date[0].format('YY-MM-DD')
             _params.end_pubdate = date[1].format('YY-MM-DD')
         }
-        if(channel_id){
+        if (channel_id) {
             _params.channel_id = channel_id
         }
         setParams({
@@ -100,12 +125,18 @@ const Article = () => {
             render: data => {
                 return (
                     <Space size="middle">
-                        <Button type="primary" shape="circle" icon={<EditOutlined />} />
+                        <Button
+                            type="primary"
+                            shape="circle"
+                            icon={<EditOutlined />}
+                            onClick={() => redirectArticle(data)}
+                        />
                         <Button
                             type="primary"
                             danger
                             shape="circle"
                             icon={<DeleteOutlined />}
+                            onClick={() => { delArticle(data) }}
                         />
                     </Space>
                 )
@@ -164,7 +195,18 @@ const Article = () => {
 
                 <div>
                     <Card title={`Filter results: ${articleList.count} `}>
-                        <Table rowKey="id" columns={columns} dataSource={articleList.list} />
+                        <Table
+                            rowKey="id"
+                            columns={columns}
+                            dataSource={articleList.list}
+                            pagination={
+                                {
+                                    pageSize: params.per_page,
+                                    total: articleList.count,
+                                    onChange: pageChange
+                                }
+                            }
+                        />
                     </Card>
                 </div>
             </Card>
