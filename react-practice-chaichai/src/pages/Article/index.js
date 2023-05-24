@@ -5,6 +5,9 @@ import { Table, Tag, Space } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { useEffect, useState } from 'react'
 import { http } from '@/utils'
+import { observer } from 'mobx-react-lite'
+import { useStore } from '@/store'
+
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -12,7 +15,10 @@ const { RangePicker } = DatePicker
 const Article = () => {
 
     // channel列表：状态管理
-    const [channelList, setChannelList] = useState([])
+    // const [channelList, setChannelList] = useState([])
+    const { channelStore } = useStore()
+
+
 
     // 文章列表：参数管理
     const [params, setParams] = useState({
@@ -25,14 +31,14 @@ const Article = () => {
         count: 0
     })
 
-    useEffect(() => {
-        // fetch channel data from '/channels'
-        const loadChannelList = async () => {
-            const channelRes = await http.get('/channels')
-            setChannelList(channelRes.data.channels)
-        }
-        loadChannelList()
-    }, [])
+    // useEffect(() => {
+    //     // fetch channel data from '/channels'
+    //     const loadChannelList = async () => {
+    //         const channelRes = await http.get('/channels')
+    //         setChannelList(channelRes.data.channels)
+    //     }
+    //     loadChannelList()
+    // }, [])
 
     useEffect(() => {
         // fetch article data from '/mp/articles'
@@ -177,7 +183,7 @@ const Article = () => {
                             placeholder="Please select channel"
                             style={{ width: 120 }}
                         >
-                            {channelList.map(item => <Option key={item.id} value={item.id}>{item.name}</Option>)}
+                            {channelStore.channelList.map(item => <Option key={item.id} value={item.id}>{item.name}</Option>)}
 
                         </Select>
                     </Form.Item>
@@ -214,4 +220,4 @@ const Article = () => {
     )
 }
 
-export default Article
+export default observer(Article)

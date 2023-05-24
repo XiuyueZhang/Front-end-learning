@@ -19,14 +19,22 @@ const Navi = () => {
 
   const { pathname } = useLocation()
   // 执行副作用：调用接口请求
-  const { userStore, loginStore } = useStore()
+  const { userStore, loginStore, channelStore } = useStore()
+
   useEffect(() => {
     const getUserInfo = async () => {
       await userStore.getUserInfo();
     };
-
     getUserInfo();
   }, [userStore]);
+
+  useEffect(() => {
+    const getChannelInfo = async () => {
+      await channelStore.getChannelList()
+    }
+    getChannelInfo();
+    
+  }, [channelStore]);
 
   const confirm = (e) => {
     console.log(e);
