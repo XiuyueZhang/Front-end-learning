@@ -37,7 +37,6 @@ const Navi = () => {
   }, [channelStore]);
 
   const confirm = (e) => {
-    console.log(e);
     // 删除token，跳转登录
     loginStore.clearToken()
     navigate('/login')

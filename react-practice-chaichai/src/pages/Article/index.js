@@ -54,7 +54,6 @@ const Article = () => {
     }, [params])
 
     const pageChange = (page) => {
-        console.log(params);
         setParams({
             ...params,
             page: page
@@ -74,12 +73,11 @@ const Article = () => {
     // edit article
     const navigate = useNavigate()
     const redirectArticle = (data) => {
-        navigate(`/publish?${data.id}`)
+        navigate(`/publish?id=${data.id}`)
     }
 
 
     const onFinish = (values) => {
-        console.log(values)
         // 用新的搜索条件更新params，重新发送get请求
         const _params = {}
         const { channel_id, date, status } = values

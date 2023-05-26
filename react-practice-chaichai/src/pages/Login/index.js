@@ -8,8 +8,6 @@ function Login() {
     const navigate = useNavigate()
 
     const onFinish = async (values) => {
-        console.log('Success:', values);
-
         try{
             await loginStore.getToken({
                 mobile: values.username,
