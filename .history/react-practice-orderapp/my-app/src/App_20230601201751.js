@@ -109,12 +109,14 @@ function App() {
       setCartData(newCart)
     }
 
-  const myParameter = {
-    ...cartData, addItemHandler, removeItemHandler
-  }
+  // const myParameter = {
+  //   ..cartData,
+  //   addItemHandler,
+  //   removeItemHandler
+  // }
 
   return (
-    <CartContext.Provider value={myParameter}>
+    <CartContext.Provider value={{...cartData, addItemHandler, removeItemHandler}}>
       <div className="App" style={{width:'750rem', fontSize:20}}>
         <Meals mealsData={mealsData} />
       </div>

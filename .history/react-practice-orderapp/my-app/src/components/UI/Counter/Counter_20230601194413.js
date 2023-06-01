@@ -3,17 +3,24 @@ import classes from './Counter.module.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPlus, faMinus} from '@fortawesome/free-solid-svg-icons'
 import React, { useContext } from 'react';
-import MyContext from '../../../store/CartContext'
+import MyContext from '../../../store/MyContext'
 
 const Counter = (props) => {
 
-    const ctx = useContext(MyContext)
+    <MyContext.Consumer>
+        {(abc) => {
+            console.log(abc)
+        }}
+    </MyContext.Consumer>
+    
 
     const addFood = (item) => {
-        ctx.addItemHandler(item)
+        // console.log(myParameter);
+        // props.onAdd(item)
     }
     const removeFood = (item) => {
-        ctx.removeItemHandler(item)
+        // console.log(myParameter);
+        // props.onRemove(item)
     }
 
     return (

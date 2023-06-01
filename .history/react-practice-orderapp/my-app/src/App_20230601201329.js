@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Meals from './components/Meals/Meals';
-import CartContext from './store/CartContext';
+import MyContext from './store/CartContext';
 
 // set Food list data here
 const MEALS_DATA = [
@@ -110,15 +110,16 @@ function App() {
     }
 
   const myParameter = {
-    ...cartData, addItemHandler, removeItemHandler
+    onAdd: addItemHandler,
+    onRemove: removeItemHandler
   }
 
   return (
-    <CartContext.Provider value={myParameter}>
+    <MyContext.Provider value={myParameter}>
       <div className="App" style={{width:'750rem', fontSize:20}}>
         <Meals mealsData={mealsData} />
       </div>
-    </CartContext.Provider>
+    </MyContext.Provider>
   );
 }
 

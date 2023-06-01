@@ -10,10 +10,12 @@ const Counter = (props) => {
     const ctx = useContext(MyContext)
 
     const addFood = (item) => {
-        ctx.addItemHandler(item)
+        console.log(ctx);
+        // props.onAdd(item)
     }
     const removeFood = (item) => {
-        ctx.removeItemHandler(item)
+        console.log(ctx);
+        // props.onRemove(item)
     }
 
     return (

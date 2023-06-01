@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, createContext } from 'react';
+import React from 'react';
 import './App.css';
 import Meals from './components/Meals/Meals';
-import CartContext from './store/CartContext';
 
 // set Food list data here
 const MEALS_DATA = [
@@ -67,6 +67,8 @@ const MEALS_DATA = [
 function App() {
 
   const [mealsData, setMealsData] = useState(MEALS_DATA)
+  // 用于跨组件传递参数
+  const MyContext = React.createContext();
 
   // 创建一个state，用来存储购物车的数据
   // 1. 商品：[]  2.商品总数  3. 商品总价
@@ -109,16 +111,17 @@ function App() {
       setCartData(newCart)
     }
 
-  const myParameter = {
-    ...cartData, addItemHandler, removeItemHandler
-  }
+    const myParameter = {
+      onAdd: {addItemHandler}, 
+      onRemove: {removeItemHandler}
+    }
 
   return (
-    <CartContext.Provider value={myParameter}>
+    <MyContext.Provider value={myParameter}>
       <div className="App" style={{width:'750rem', fontSize:20}}>
         <Meals mealsData={mealsData} />
       </div>
-    </CartContext.Provider>
+    </MyContext.Provider>
   );
 }
 
