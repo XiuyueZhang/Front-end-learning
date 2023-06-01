@@ -9,7 +9,7 @@ const Meals = (props) => {
         // set scroll bar to Meals
         <div className={classes.Meals}>
             {props.mealsData.map(item=>
-                <Food key={item.id} food={item} onAdd={props.onAdd}/>
+                <Food key={item.id} food={item} onAdd={props.onAdd} onRemove={props.onRemove}/>
             )}
             
         </div>

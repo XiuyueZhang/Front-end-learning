@@ -8,15 +8,18 @@ const Counter = (props) => {
     const addFood = (item) => {
         props.onAdd(item)
     }
+    const removeFood = (item) => {
+        props.onRemove(item)
+    }
 
     return (
         <div className={classes.Counter}>
             { (props.food.amount && props.food.amount !== 0)?            
                 (<>
-                    <button className={classes.Sub}>
+                    <button className={classes.Sub} onClick={()=>{removeFood(props.food)}}>
                         <FontAwesomeIcon icon={faMinus}/>
                     </button>
-                    <span className={classes.Count}>{props.amount}</span>
+                    <span className={classes.Count}>{props.food.amount}</span>
                 </>
                 ) : null
             }

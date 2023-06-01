@@ -89,13 +89,28 @@ function App() {
     newCart.totalPrice += item.price
     newCart.totleAmount += 1
     console.log(newCart)
-    
-    
+    setCartData(newCart)
   }
+    // add item to the cart
+    const removeItemHandler = (item) => {
+      // item: the item will be added to the cart
+      // copy cartData
+      const newCart = {...cartData}
+ 
+      item.amount -= 1
+      if(item.amount === 0){
+        newCart.items.splice(newCart.items.indexOf(item),1)
+      }
+
+      newCart.totalPrice -= item.price
+      newCart.totleAmount -= 1
+      console.log(newCart)
+      setCartData(newCart)
+    }
 
   return (
     <div className="App" style={{width:'750rem', fontSize:20}}>
-      <Meals mealsData={mealsData} onAdd={addItemHandler}/>
+      <Meals mealsData={mealsData} onAdd={addItemHandler} onRemove={removeItemHandler}/>
     </div>
   );
 }
