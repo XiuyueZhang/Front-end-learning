@@ -8,7 +8,7 @@ const Meals = ({mealsData}) => {
         // set scroll bar to Meals
         <div className={classes.Meals}>
             {mealsData.map(item=>
-                <Food key={item.id} title={item.title} desc={item.desc} img={item.img} price={item.price}/>
+                <Food key={item.id} food={item}/>
             )}
             
         </div>
