@@ -14,7 +14,7 @@ const Food = (props) => {
                 <p className={classes.Desc}>{props.food.desc}</p>
                 <div className={classes.PriceBox}>
                     <span className={classes.Price}>{props.food.price}</span>
-                    <Counter food={props.food} onAdd={props.onAdd} onRemove={props.onRemove}/>
+                    <Counter food={props.food}/>
                 </div>
             </div>
         </div>
