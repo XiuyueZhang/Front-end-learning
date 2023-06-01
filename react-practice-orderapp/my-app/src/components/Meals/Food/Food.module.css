@@ -1,0 +1,46 @@
+.Food{
+    border-bottom: 1px #f2f2f2 solid;
+    /* set flex display */
+    display: flex;
+    /* 设置副轴的对齐方式*/
+    align-items: center;
+    padding: 10rem;
+}
+
+.ImgBox{
+    width: 280rem;
+    padding-top: 20rem
+}
+
+img{
+    width: 250rem
+}
+
+.Title{
+    font-size: 14px;
+    padding: 0 10rem 0 10rem;
+}
+
+.Desc{
+    font-size: 12px;
+    color:#bbb;
+    padding: 0 20rem 0 10rem;
+}
+
+.PriceBox{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40rem 0 10rem;
+}
+
+.Price{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.Price::before{
+    content: '$';
+    font-size: 10px;
+    font-weight: bold;
+}
+
