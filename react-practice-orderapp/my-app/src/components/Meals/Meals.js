@@ -3,12 +3,13 @@ import Food from './Food/Food';
 import classes from './Meals.module.css'
 
 // 
-const Meals = ({mealsData}) => {
+const Meals = (props) => {
+
     return (
         // set scroll bar to Meals
         <div className={classes.Meals}>
-            {mealsData.map(item=>
-                <Food key={item.id} food={item}/>
+            {props.mealsData.map(item=>
+                <Food key={item.id} food={item} onAdd={props.onAdd}/>
             )}
             
         </div>

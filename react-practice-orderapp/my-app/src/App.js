@@ -63,14 +63,39 @@ const MEALS_DATA = [
 ]
 
 
-
 function App() {
 
   const [mealsData, setMealsData] = useState(MEALS_DATA)
 
+  // 创建一个state，用来存储购物车的数据
+  // 1. 商品：[]  2.商品总数  3. 商品总价
+  const [cartData, setCartData] = useState({
+    items: [],
+    totleAmount: 0,
+    totalPrice: 0
+  })
+  // add item to the cart
+  const addItemHandler = (item) => {
+    // item: the item will be added to the cart
+    // copy cartData
+    const newCart = {...cartData}
+    
+    if(newCart.items.indexOf(item) === -1){
+      newCart.items.push(item)
+      item.amount = 1
+    }else{
+      item.amount += 1
+    }
+    newCart.totalPrice += item.price
+    newCart.totleAmount += 1
+    console.log(newCart)
+    
+    
+  }
+
   return (
     <div className="App" style={{width:'750rem', fontSize:20}}>
-      <Meals mealsData={mealsData}/>
+      <Meals mealsData={mealsData} onAdd={addItemHandler}/>
     </div>
   );
 }

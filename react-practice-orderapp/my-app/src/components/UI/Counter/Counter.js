@@ -4,9 +4,14 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPlus, faMinus} from '@fortawesome/free-solid-svg-icons'
 
 const Counter = (props) => {
+
+    const addFood = (item) => {
+        props.onAdd(item)
+    }
+
     return (
         <div className={classes.Counter}>
-            { (props.amount && props.amount !== 0)?            
+            { (props.food.amount && props.food.amount !== 0)?            
                 (<>
                     <button className={classes.Sub}>
                         <FontAwesomeIcon icon={faMinus}/>
@@ -16,7 +21,7 @@ const Counter = (props) => {
                 ) : null
             }
             
-            <button className={classes.Add}>
+            <button className={classes.Add} onClick={()=>{addFood(props.food)}}>
                 <FontAwesomeIcon icon={faPlus}/>
             </button>
         </div>
