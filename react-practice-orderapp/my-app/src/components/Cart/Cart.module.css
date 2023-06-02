@@ -39,3 +39,19 @@
     font-size: 32rem;
     font-weight: bold;
 }
+
+.checkoutInactive{
+    width: 200rem;
+    height:85rem;
+    border-radius: 40rem; 
+    position: absolute;
+    right: 0;
+    background-color: lightgray;
+    border: none;
+    font-size: 32rem;
+    font-weight: bold;
+}
+
+.inactive{
+    color:gray;
+}
