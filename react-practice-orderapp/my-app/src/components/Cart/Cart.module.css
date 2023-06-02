@@ -10,6 +10,7 @@
     width: 710rem;
     height: 80rem;
     border-radius: 40rem; 
+    z-index: 9999;
 }
 
 .bag{
