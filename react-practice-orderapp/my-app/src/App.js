@@ -3,6 +3,7 @@ import './App.css';
 import Meals from './components/Meals/Meals';
 import CartContext from './store/CartContext';
 import Search from './components/Search/Search';
+import Cart from './components/Cart/Cart';
 
 // set Food list data here
 const MEALS_DATA = [
@@ -128,7 +129,7 @@ function App() {
           });
           setShowFilter(filteredMealData);
       }
-  };
+    };
   
 
   const myParameter = {
@@ -140,6 +141,7 @@ function App() {
       <div className="App" style={{width:'750rem', fontSize:20}}>
         <Search keyDown={keyDown}/>
         <Meals mealsData={showFilter} />
+        <Cart cartData={cartData}/>
       </div>
     </CartContext.Provider>
   );

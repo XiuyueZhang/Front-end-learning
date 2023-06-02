@@ -15,16 +15,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 10px;
+    font-size: 20rem;
     padding: 0;
 }
 
 .Sub{
     background-color: #fff;
-    border: 1px black solid;
+    border: 2rem black solid;
 }
 
 .Count{
-    font-size: 12px;
+    font-size: 24rem;
     margin: 0 5rem;
 }

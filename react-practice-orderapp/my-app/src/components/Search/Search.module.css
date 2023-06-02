@@ -2,17 +2,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px #f2f2f2 solid;
+    padding: 20rem;
+    border-bottom: 2rem #f2f2f2 solid;
     
 }
 
 .wrapper{
-    border: 1px black;
-    border-radius: 10px;
-    font-size: 14px;
-    padding: 3px;
-    width: 300px;
+    border: 2rem black;
+    border-radius: 20rem;
+    font-size: 28rem;
+    padding: 6rem;
+    width: 600rem;
     background-color: hsl(0, 0%, 90%);
     display: flex;
     align-items: center;
@@ -24,8 +24,10 @@
     background-color: hsl(0, 0%, 90%);
     color: gray;
     outline: none;
+    font-size: 24rem;
 }
 
 .icon{
-    margin: 5px 8px 5px 8px;
+    margin: 10rem 16rem 10rem 16rem;
+    font-size: 24rem;
 }

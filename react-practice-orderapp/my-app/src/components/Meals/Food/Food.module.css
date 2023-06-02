@@ -17,12 +17,12 @@ img{
 }
 
 .Title{
-    font-size: 14px;
+    font-size: 28rem;
     padding: 0 10rem 0 10rem;
 }
 
 .Desc{
-    font-size: 12px;
+    font-size: 24rem;
     color:#bbb;
     padding: 0 20rem 0 10rem;
 }
@@ -34,13 +34,13 @@ img{
 }
 
 .Price{
-    font-size: 14px;
+    font-size: 28rem;
     font-weight: bold;
 }
 
 .Price::before{
     content: '$';
-    font-size: 10px;
+    font-size: 20rem;
     font-weight: bold;
 }
 
