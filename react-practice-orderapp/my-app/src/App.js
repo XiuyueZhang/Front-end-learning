@@ -141,7 +141,7 @@ function App() {
       <div className="App" style={{width:'750rem', fontSize:20}}>
         <Search keyDown={keyDown}/>
         <Meals mealsData={showFilter} />
-        <Cart cartData={cartData}/>
+        <Cart />
       </div>
     </CartContext.Provider>
   );

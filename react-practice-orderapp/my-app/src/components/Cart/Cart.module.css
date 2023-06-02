@@ -28,6 +28,11 @@
     padding-left: 18rem;
 }
 
+.amount::before{
+    content: '$';
+    font-size: 24rem;
+}
+
 .checkout{
     width: 200rem;
     height:85rem;
