@@ -22,16 +22,33 @@
     color: rgba(172,139,86, 0.9);
 }
 
+.number{
+    color:red;
+    font-size: 26rem;
+    position: absolute;
+    top: 0;
+    left: 80rem;
+}
+
 .amount{
+    position: absolute;
+    left: 7rem;
+    top:2rem;
+    color:white;
+    font-size: 20rem;
+}
+
+.price{
     color: white;
     font-size: 36rem;
     font-weight: bold;
     padding-left: 18rem;
 }
 
-.amount::before{
+.price::before{
     content: '$';
     font-size: 24rem;
+    padding:2rem
 }
 
 .checkout{

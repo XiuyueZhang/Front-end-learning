@@ -1,6 +1,6 @@
 import classes from './Cart.module.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBagShopping} from '@fortawesome/free-solid-svg-icons'
+import {faBagShopping, faCircle} from '@fortawesome/free-solid-svg-icons'
 import CartContext from '../../store/CartContext'
 import { useContext } from 'react'
 
@@ -13,7 +13,13 @@ const Cart = () => {
             <span className={classes.bag}>
                 <FontAwesomeIcon icon={faBagShopping} />
             </span>
-            <span className={classes.amount}>
+            <span className={classes.number}>
+                <FontAwesomeIcon icon={faCircle} />
+                <span className={classes.amount}>
+                    {ctx.totleAmount}
+                </span> 
+            </span>
+            <span className={classes.price}>
                 {ctx.totalPrice}
             </span>
             <button className={ctx.totalPrice === 0 ? classes.checkoutInactive: classes.checkout }>
