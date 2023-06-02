@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Meals from './components/Meals/Meals';
 import CartContext from './store/CartContext';
+import Search from './components/Search/Search';
 
 // set Food list data here
 const MEALS_DATA = [
@@ -68,6 +69,8 @@ function App() {
 
   const [mealsData, setMealsData] = useState(MEALS_DATA)
 
+  const [showFilter, setShowFilter] = useState(MEALS_DATA)
+
   // 创建一个state，用来存储购物车的数据
   // 1. 商品：[]  2.商品总数  3. 商品总价
   const [cartData, setCartData] = useState({
@@ -89,7 +92,6 @@ function App() {
     }
     newCart.totalPrice += item.price
     newCart.totleAmount += 1
-    console.log(newCart)
     setCartData(newCart)
   }
     // add item to the cart
@@ -105,9 +107,29 @@ function App() {
 
       newCart.totalPrice -= item.price
       newCart.totleAmount -= 1
-      console.log(newCart)
       setCartData(newCart)
     }
+
+    const keyDown = (e) => {
+      if (e.key === 'Enter') {
+          valueChangeHandler(e.target.value)
+        }
+    }
+
+    const valueChangeHandler = (value) => {
+      const trimmedValue = value.trim();
+      const lowercaseValue = trimmedValue.toLowerCase();
+  
+      if (lowercaseValue === '') {
+          setShowFilter(mealsData.map(item => item));
+      } else {
+          const filteredMealData = mealsData.filter(item => {
+              return item.title.toLowerCase().includes(lowercaseValue) || item.desc.toLowerCase().includes(lowercaseValue);
+          });
+          setShowFilter(filteredMealData);
+      }
+  };
+  
 
   const myParameter = {
     ...cartData, addItemHandler, removeItemHandler
@@ -116,7 +138,8 @@ function App() {
   return (
     <CartContext.Provider value={myParameter}>
       <div className="App" style={{width:'750rem', fontSize:20}}>
-        <Meals mealsData={mealsData} />
+        <Search keyDown={keyDown}/>
+        <Meals mealsData={showFilter} />
       </div>
     </CartContext.Provider>
   );
