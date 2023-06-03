@@ -13,8 +13,8 @@ const Search = (props) => {
                     type="text"
                     className={classes.keyword}
                     // value={value}
-                    onKeyDown={props.keyDown}
-                    // onChange={valueChangeHandler}
+                    // onKeyDown={props.keyDown}
+                    onChange={props.valueChangeHandler}
                     placeholder="Keywords"
                 />
             </div>

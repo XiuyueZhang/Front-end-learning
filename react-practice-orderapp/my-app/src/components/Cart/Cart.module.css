@@ -38,9 +38,20 @@
     font-size: 20rem;
 }
 
+.hide{
+    display: none;
+}
+
 .price{
     color: white;
     font-size: 36rem;
+    font-weight: bold;
+    padding-left: 18rem;
+}
+
+.msg{
+    color: gray;
+    font-size: 30rem;
     font-weight: bold;
     padding-left: 18rem;
 }

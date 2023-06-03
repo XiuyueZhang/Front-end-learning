@@ -4,6 +4,8 @@ import Meals from './components/Meals/Meals';
 import CartContext from './store/CartContext';
 import Search from './components/Search/Search';
 import Cart from './components/Cart/Cart';
+import Backdrop from './components/UI/Backdrop/Backdrop'
+import CartDetails from './components/Cart/CartDetails/CartDetails';
 
 // set Food list data here
 const MEALS_DATA = [
@@ -111,24 +113,16 @@ function App() {
       setCartData(newCart)
     }
 
-    const keyDown = (e) => {
-      if (e.key === 'Enter') {
-          valueChangeHandler(e.target.value)
-        }
-    }
-
-    const valueChangeHandler = (value) => {
+    const valueChangeHandler = (e) => {
+      const value = e.target.value
       const trimmedValue = value.trim();
       const lowercaseValue = trimmedValue.toLowerCase();
   
-      if (lowercaseValue === '') {
-          setShowFilter(mealsData.map(item => item));
-      } else {
-          const filteredMealData = mealsData.filter(item => {
-              return item.title.toLowerCase().includes(lowercaseValue) || item.desc.toLowerCase().includes(lowercaseValue);
-          });
-          setShowFilter(filteredMealData);
-      }
+      const filteredMealData = mealsData.filter(item => {
+          return item.title.toLowerCase().includes(lowercaseValue) || item.desc.toLowerCase().includes(lowercaseValue);
+      });
+      setShowFilter(filteredMealData);
+    
     };
   
 
@@ -139,7 +133,7 @@ function App() {
   return (
     <CartContext.Provider value={myParameter}>
       <div className="App" style={{width:'750rem', fontSize:20}}>
-        <Search keyDown={keyDown}/>
+        <Search valueChangeHandler={valueChangeHandler}/>
         <Meals mealsData={showFilter} />
         <Cart />
       </div>

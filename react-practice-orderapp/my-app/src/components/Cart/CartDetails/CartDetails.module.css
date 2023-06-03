@@ -1,0 +1,39 @@
+.back{
+    background-color: #f7f4f4;
+    width: 750rem;
+    height: 200rem;
+    position: fixed;
+    bottom: 0;
+    border-radius: 40rem 40rem 0 0;
+}
+
+.wrapper{
+    width: 100%;
+    display: flex;
+}
+
+.detail, .icon,.clear{
+    color: black;
+    font-size: 30rem;
+    left: 30rem;
+    margin: 10rem 20rem;
+
+}
+
+.icon{
+    color:#aaa;
+    font-size: 30rem;
+    position: absolute;
+    left: 540rem;
+}
+
+.clear{
+    position: absolute;
+    left: 580rem;
+}
+
+.content{
+    width: 750rem;
+    height:100%;
+    background-color: #bfa;
+}
