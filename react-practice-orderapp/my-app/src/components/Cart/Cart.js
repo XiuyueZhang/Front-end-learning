@@ -13,14 +13,15 @@ const Cart = () => {
     const [showCart, setShowCart] = useState(false)
 
     const showCartHandler = () => {
-        setShowCart(!showCart)
+        if(ctx.totleAmount === 0) return;
+        setShowCart(prevState => !showCart)
     }
 
     return (
-        <div className={classes.wrapper}>
+        <div className={classes.wrapper} onClick={showCartHandler}>
             {showCart && <CartDetails />}
 
-            <span className={classes.bag} onClick={showCartHandler}>
+            <span className={classes.bag}>
                 <FontAwesomeIcon icon={faBagShopping} />
             </span>
             <span className={`${classes.number} ${ctx.totleAmount === 0 ? classes.hide : ''}`}>

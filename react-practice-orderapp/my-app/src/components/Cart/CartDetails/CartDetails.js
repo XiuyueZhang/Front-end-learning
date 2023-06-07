@@ -13,7 +13,8 @@ const CartDetails = () => {
     
     return (
         <Backdrop>
-            <div className={classes.back}>
+            <div className={classes.back}
+                onClick={e => e.stopPropagation()}>
                 <div className={classes.wrapper}>
                     <span className={classes.detail}>Cart details</span>
                     <span className={classes.icon}>
@@ -24,10 +25,9 @@ const CartDetails = () => {
                 </div>
                 <div className={classes.content}>
                     {ctx.items.map(item=>
-                        <Food key={item.id} food={item}/>
+                        <Food noDesc key={item.id} food={item}/>
                     )}
                 </div>
-                <div className={classes.null}></div>
             </div>
         </Backdrop>
     );

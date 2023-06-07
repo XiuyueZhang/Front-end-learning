@@ -119,7 +119,7 @@ function App() {
         totleAmount: 0,
         totalPrice: 0
       }) 
-      setShowFilter(MEALS_DATA)
+      
     }
 
     const valueChangeHandler = (e) => {
