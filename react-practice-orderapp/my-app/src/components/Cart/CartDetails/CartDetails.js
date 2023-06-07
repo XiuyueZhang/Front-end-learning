@@ -6,6 +6,7 @@ import {faTrash} from '@fortawesome/free-solid-svg-icons'
 import CartContext from '../../../store/CartContext';
 import { useContext } from 'react'
 import Food from '../../Meals/Food/Food'
+import CancelConfirm from './CancelConfirm';
 
 const CartDetails = () => {
 
@@ -13,6 +14,7 @@ const CartDetails = () => {
     
     return (
         <Backdrop>
+            <CancelConfirm />
             <div className={classes.back}
                 onClick={e => e.stopPropagation()}>
                 <div className={classes.wrapper}>
@@ -28,6 +30,7 @@ const CartDetails = () => {
                         <Food noDesc key={item.id} food={item}/>
                     )}
                 </div>
+                
             </div>
         </Backdrop>
     );

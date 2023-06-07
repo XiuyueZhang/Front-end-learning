@@ -1,0 +1,35 @@
+.wrapper{
+    margin: 700rem auto;
+    width: 450rem;
+    height: 200rem;
+    background-color: #fff;
+    border-radius: 20rem;
+}
+
+h2{
+    font-size: 30rem;
+    padding: 30rem 45rem 15rem 45rem;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+}
+
+.button button{
+    height: 50rem;
+    width: 130rem;
+    border-radius: 30rem;
+    border: 1px solid black;
+    padding: 10rem;
+    margin: 0;
+    margin: 0 20rem;
+}
+
+.cancelButton{
+    background: none;
+}
+
+.confirmButton{
+    background-color: rgb(255, 196, 0);
+}

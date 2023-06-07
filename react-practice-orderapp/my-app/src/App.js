@@ -4,8 +4,7 @@ import Meals from './components/Meals/Meals';
 import CartContext from './store/CartContext';
 import Search from './components/Search/Search';
 import Cart from './components/Cart/Cart';
-import Backdrop from './components/UI/Backdrop/Backdrop'
-import CartDetails from './components/Cart/CartDetails/CartDetails';
+import Checkout from './components/Cart/Checkout/Checkout';
 
 // set Food list data here
 const MEALS_DATA = [

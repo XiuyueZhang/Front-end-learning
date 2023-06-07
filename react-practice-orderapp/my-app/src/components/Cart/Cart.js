@@ -5,21 +5,33 @@ import CartContext from '../../store/CartContext'
 import { useContext, useState } from 'react'
 import CartDetails from './CartDetails/CartDetails'
 import React from 'react';
+import Checkout from './Checkout/Checkout'
 
 const Cart = () => {
 
     const ctx = useContext(CartContext)
 
+    const [showDetails, setShowDetails] = useState(false)
     const [showCart, setShowCart] = useState(false)
+
+    const showDetailsHandler = () => {
+        if(ctx.totleAmount === 0) return;
+        setShowDetails(prevState => !showDetails)
+    }
 
     const showCartHandler = () => {
         if(ctx.totleAmount === 0) return;
         setShowCart(prevState => !showCart)
     }
 
+    const closeCartHandler = () => {
+        setShowCart(false)
+    }
+
     return (
-        <div className={classes.wrapper} onClick={showCartHandler}>
-            {showCart && <CartDetails />}
+        <div className={classes.wrapper} onClick={showDetailsHandler}>
+            {(showDetails && ctx.totleAmount !== 0) && <CartDetails />}
+            {showCart && <Checkout onHide={closeCartHandler}/>}
 
             <span className={classes.bag}>
                 <FontAwesomeIcon icon={faBagShopping} />
@@ -31,12 +43,12 @@ const Cart = () => {
                 </span>
             </span>
             {ctx.totalPrice === 0? <span className={classes.msg}
-                onClick={showCartHandler}>
+                onClick={showDetailsHandler}>
                     Please add items</span>:<span className={classes.price}>
                 {ctx.totalPrice}
             </span>}
             
-            <button className={ctx.totalPrice === 0 ? classes.checkoutInactive: classes.checkout }>
+            <button className={ctx.totalPrice === 0 ? classes.checkoutInactive: classes.checkout} onClick={showCartHandler}>
                 <span className={ctx.totalPrice === 0 ? classes.inactive : ''}>Check Out</span>
             </button>
 
