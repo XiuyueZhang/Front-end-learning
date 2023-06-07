@@ -11,7 +11,6 @@ const Meals = (props) => {
             {props.mealsData.map(item=>
                 <Food key={item.id} food={item}/>
             )}
-            
         </div>
     );
 }

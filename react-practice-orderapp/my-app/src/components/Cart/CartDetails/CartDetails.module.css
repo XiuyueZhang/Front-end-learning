@@ -1,7 +1,6 @@
 .back{
     background-color: #f7f4f4;
     width: 750rem;
-    height: 200rem;
     position: fixed;
     bottom: 0;
     border-radius: 40rem 40rem 0 0;
@@ -35,5 +34,11 @@
 .content{
     width: 750rem;
     height:100%;
-    background-color: #bfa;
+    /* background-color: #bfa; */
+}
+
+.null{
+    background-color: #f7f4f4;
+    width: 750rem;
+    height:120rem;
 }

@@ -113,6 +113,15 @@ function App() {
       setCartData(newCart)
     }
 
+    const clearCartHandler = () => {
+      setCartData({
+        items: [],
+        totleAmount: 0,
+        totalPrice: 0
+      }) 
+      setShowFilter(MEALS_DATA)
+    }
+
     const valueChangeHandler = (e) => {
       const value = e.target.value
       const trimmedValue = value.trim();
@@ -127,7 +136,7 @@ function App() {
   
 
   const myParameter = {
-    ...cartData, addItemHandler, removeItemHandler
+    ...cartData, addItemHandler, removeItemHandler,clearCartHandler
   }
 
   return (
