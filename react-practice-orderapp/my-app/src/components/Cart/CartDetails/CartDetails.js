@@ -4,24 +4,27 @@ import Backdrop from '../../UI/Backdrop/Backdrop';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTrash} from '@fortawesome/free-solid-svg-icons'
 import CartContext from '../../../store/CartContext';
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import Food from '../../Meals/Food/Food'
 import CancelConfirm from './CancelConfirm';
 
 const CartDetails = () => {
 
     const ctx = useContext(CartContext)
+
+    const [showCancelConfirm, setShowCancelConfirm] = useState(false)
+
+    const clearCartConfirm = () => {
+        setShowCancelConfirm(true)
+    }
     
     return (
         <Backdrop >
-            {ctx.showCancelConfirm && <CancelConfirm />}
+            {showCancelConfirm && <CancelConfirm setShowCancelConfirm={setShowCancelConfirm} />}
             <div
                 className={classes.back}
                 onClick={e => {
                     e.stopPropagation();
-                    if (!ctx.showCancelConfirm) {
-                        // Handle click event on Backdrop here
-                    }
                 }}
                 >
                 <div className={classes.wrapper}>
@@ -30,7 +33,7 @@ const CartDetails = () => {
                         <FontAwesomeIcon icon={faTrash} />
                     </span>
                     <span className={classes.clear}
-                        onClick={ctx.clearCartConfirm}>Clear cart</span>
+                        onClick={clearCartConfirm}>Clear cart</span>
                 </div>
                 <div className={classes.content}>
                     {ctx.items.map(item=>

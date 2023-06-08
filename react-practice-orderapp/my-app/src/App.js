@@ -72,7 +72,7 @@ function App() {
 
   const [showFilter, setShowFilter] = useState(MEALS_DATA)
 
-  const [showCancelConfirm, setShowCancelConfirm] = useState(false)
+  
 
   // 创建一个state，用来存储购物车的数据
   // 1. 商品：[]  2.商品总数  3. 商品总价
@@ -113,15 +113,6 @@ function App() {
       setCartData(newCart)
     }
 
-    const clearCartConfirm = () => {
-      setShowCancelConfirm(true)
-    }
-
-      const clearCartCancel = () => {
-      setShowCancelConfirm(false)
-      console.log()
-    }
-
     const valueChangeHandler = (e) => {
       const value = e.target.value
       const trimmedValue = value.trim();
@@ -136,15 +127,16 @@ function App() {
 
     const clearCartHandler = () => {
       const newCart = {...cartData}
+      newCart.items.forEach(item => delete item.amount)
       newCart.totalPrice = 0
       newCart.totleAmount = 0
-      newCart.item = []
+      newCart.items = []
+      
       setCartData(newCart)
-      setShowCancelConfirm(false)
     }
 
   const myParameter = {
-    ...cartData, addItemHandler, removeItemHandler,clearCartConfirm,clearCartHandler, clearCartCancel,showCancelConfirm
+    ...cartData, addItemHandler, removeItemHandler,clearCartHandler
   }
 
   return (

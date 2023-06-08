@@ -1,9 +1,15 @@
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import classes from './CancelConfirm.module.css';
 import CartContext from '../../../store/CartContext';
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
-const CancelConfirm = () => {
+const CancelConfirm = (props) => {
+
+
+    const clearCartCancel = (e) => {
+        props.setShowCancelConfirm(false)
+        e.stopPropagation()
+    }
 
     const ctx = useContext(CartContext)
 
@@ -12,7 +18,7 @@ const CancelConfirm = () => {
             <div className={classes.wrapper}>
                 <h2>Confirm to clear the cart</h2>
                 <div className={classes.button}>
-                    <button className={classes.cancelButton} onClick={ctx.clearCartCancel}>Cancel</button>
+                    <button className={classes.cancelButton} onClick={clearCartCancel}>Cancel</button>
                     <button className={classes.confirmButton} onClick={ctx.clearCartHandler}>Confirm</button>
                 </div>
             </div>
