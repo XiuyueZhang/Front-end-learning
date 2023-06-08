@@ -18,9 +18,16 @@ const CartDetails = () => {
         setShowCancelConfirm(true)
     }
     
+    const clearCartCancel = (e) => {
+        e.stopPropagation()
+        setShowCancelConfirm(false)
+        
+    }
+    
+
     return (
-        <Backdrop >
-            {showCancelConfirm && <CancelConfirm setShowCancelConfirm={setShowCancelConfirm} />}
+        <Backdrop onClick={clearCartCancel}>
+            {showCancelConfirm && <CancelConfirm clearCartCancel={clearCartCancel} />}
             <div
                 className={classes.back}
                 onClick={e => {

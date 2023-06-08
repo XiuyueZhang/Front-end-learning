@@ -97,43 +97,42 @@ function App() {
     newCart.totleAmount += 1
     setCartData(newCart)
   }
-    // add item to the cart
-    const removeItemHandler = (item) => {
-      // item: the item will be added to the cart
-      // copy cartData
-      const newCart = {...cartData}
- 
-      item.amount -= 1
-      if(item.amount === 0){
-        newCart.items.splice(newCart.items.indexOf(item),1)
-      }
+  // add item to the cart
+  const removeItemHandler = (item) => {
+    // item: the item will be added to the cart
+    // copy cartData
+    const newCart = {...cartData}
 
-      newCart.totalPrice -= item.price
-      newCart.totleAmount -= 1
-      setCartData(newCart)
+    item.amount -= 1
+    if(item.amount === 0){
+      newCart.items.splice(newCart.items.indexOf(item),1)
     }
 
-    const valueChangeHandler = (e) => {
-      const value = e.target.value
-      const trimmedValue = value.trim();
-      const lowercaseValue = trimmedValue.toLowerCase();
+    newCart.totalPrice -= item.price
+    newCart.totleAmount -= 1
+    setCartData(newCart)
+  }
+
+  const valueChangeHandler = (keyword) => {
+    const lowercaseValue = keyword.toLowerCase();
+
+    const filteredMealData = mealsData.filter(item => {
+        return item.title.toLowerCase().includes(lowercaseValue) || item.desc.toLowerCase().includes(lowercaseValue);
+    });
+    setShowFilter(filteredMealData);
   
-      const filteredMealData = mealsData.filter(item => {
-          return item.title.toLowerCase().includes(lowercaseValue) || item.desc.toLowerCase().includes(lowercaseValue);
-      });
-      setShowFilter(filteredMealData);
-    
-    };
+  };
 
-    const clearCartHandler = () => {
-      const newCart = {...cartData}
-      newCart.items.forEach(item => delete item.amount)
-      newCart.totalPrice = 0
-      newCart.totleAmount = 0
-      newCart.items = []
-      
-      setCartData(newCart)
-    }
+  const clearCartHandler = () => {
+    const newCart = {...cartData}
+    newCart.items.forEach(item => delete item.amount)
+    console.log(newCart)
+    newCart.totalPrice = 0
+    newCart.totleAmount = 0
+    newCart.items = []
+    
+    setCartData(newCart)
+  }
 
   const myParameter = {
     ...cartData, addItemHandler, removeItemHandler,clearCartHandler

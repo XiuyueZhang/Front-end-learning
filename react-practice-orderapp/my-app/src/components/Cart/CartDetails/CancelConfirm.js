@@ -6,10 +6,7 @@ import { useContext, useState } from 'react'
 const CancelConfirm = (props) => {
 
 
-    const clearCartCancel = (e) => {
-        props.setShowCancelConfirm(false)
-        e.stopPropagation()
-    }
+
 
     const ctx = useContext(CartContext)
 
@@ -18,7 +15,7 @@ const CancelConfirm = (props) => {
             <div className={classes.wrapper}>
                 <h2>Confirm to clear the cart</h2>
                 <div className={classes.button}>
-                    <button className={classes.cancelButton} onClick={clearCartCancel}>Cancel</button>
+                    <button className={classes.cancelButton} onClick={props.clearCartCancel}>Cancel</button>
                     <button className={classes.confirmButton} onClick={ctx.clearCartHandler}>Confirm</button>
                 </div>
             </div>
