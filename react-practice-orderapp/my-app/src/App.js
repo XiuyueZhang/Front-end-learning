@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import Meals from './components/Meals/Meals';
 import CartContext from './store/CartContext';
 import Search from './components/Search/Search';
 import Cart from './components/Cart/Cart';
-import Checkout from './components/Cart/Checkout/Checkout';
 
 // set Food list data here
 const MEALS_DATA = [
