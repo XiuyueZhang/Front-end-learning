@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Meals from './components/Meals/Meals';
 import CartContext from './store/CartContext';
@@ -141,10 +141,8 @@ function App() {
       newCart.totleAmount = 0
       newCart.item = []
       setCartData(newCart)
-      
-      setShowFilter(MEALS_DATA)
+      setShowCancelConfirm(false)
     }
-  
 
   const myParameter = {
     ...cartData, addItemHandler, removeItemHandler,clearCartConfirm,clearCartHandler, clearCartCancel,showCancelConfirm
