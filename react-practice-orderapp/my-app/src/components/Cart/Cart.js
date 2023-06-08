@@ -2,7 +2,7 @@ import classes from './Cart.module.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBagShopping, faCircle} from '@fortawesome/free-solid-svg-icons'
 import CartContext from '../../store/CartContext'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import CartDetails from './CartDetails/CartDetails'
 import React from 'react';
 import Checkout from './Checkout/Checkout'
@@ -28,9 +28,16 @@ const Cart = () => {
         setShowCart(false)
     }
 
+    useEffect(()=>{
+        if(ctx.totleAmount === 0){
+            setShowDetails(false)
+            setShowCart(false)
+        }
+    },[ctx])
+
     return (
         <div className={classes.wrapper} onClick={showDetailsHandler}>
-            {(showDetails && ctx.totleAmount !== 0) && <CartDetails />}
+            {showDetails && <CartDetails />}
             {showCart && <Checkout onHide={closeCartHandler}/>}
 
             <span className={classes.bag}>

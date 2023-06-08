@@ -14,6 +14,7 @@ const Checkout = (props) => {
     const ctx = useContext(CartContext)
 
 
+
     return ReactDOM.createPortal(
         <div className={classes.checkout}>
             <div className={classes.close} onClick={props.onHide}>
