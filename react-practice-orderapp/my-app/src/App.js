@@ -73,6 +73,8 @@ function App() {
 
   const [showFilter, setShowFilter] = useState(MEALS_DATA)
 
+  const [showCancelConfirm, setShowCancelConfirm] = useState(false)
+
   // 创建一个state，用来存储购物车的数据
   // 1. 商品：[]  2.商品总数  3. 商品总价
   const [cartData, setCartData] = useState({
@@ -112,13 +114,13 @@ function App() {
       setCartData(newCart)
     }
 
-    const clearCartHandler = () => {
-      setCartData({
-        items: [],
-        totleAmount: 0,
-        totalPrice: 0
-      }) 
-      
+    const clearCartConfirm = () => {
+      setShowCancelConfirm(true)
+    }
+
+      const clearCartCancel = () => {
+      setShowCancelConfirm(false)
+      console.log()
     }
 
     const valueChangeHandler = (e) => {
@@ -132,10 +134,20 @@ function App() {
       setShowFilter(filteredMealData);
     
     };
+
+    const clearCartHandler = () => {
+      const newCart = {...cartData}
+      newCart.totalPrice = 0
+      newCart.totleAmount = 0
+      newCart.item = []
+      setCartData(newCart)
+      
+      setShowFilter(MEALS_DATA)
+    }
   
 
   const myParameter = {
-    ...cartData, addItemHandler, removeItemHandler,clearCartHandler
+    ...cartData, addItemHandler, removeItemHandler,clearCartConfirm,clearCartHandler, clearCartCancel,showCancelConfirm
   }
 
   return (

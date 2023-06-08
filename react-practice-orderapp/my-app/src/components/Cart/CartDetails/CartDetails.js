@@ -13,17 +13,24 @@ const CartDetails = () => {
     const ctx = useContext(CartContext)
     
     return (
-        <Backdrop>
-            <CancelConfirm />
-            <div className={classes.back}
-                onClick={e => e.stopPropagation()}>
+        <Backdrop >
+            {ctx.showCancelConfirm && <CancelConfirm />}
+            <div
+                className={classes.back}
+                onClick={e => {
+                    e.stopPropagation();
+                    if (!ctx.showCancelConfirm) {
+                        // Handle click event on Backdrop here
+                    }
+                }}
+                >
                 <div className={classes.wrapper}>
                     <span className={classes.detail}>Cart details</span>
                     <span className={classes.icon}>
                         <FontAwesomeIcon icon={faTrash} />
                     </span>
                     <span className={classes.clear}
-                        onClick={ctx.clearCartHandler}>Clear cart</span>
+                        onClick={ctx.clearCartConfirm}>Clear cart</span>
                 </div>
                 <div className={classes.content}>
                     {ctx.items.map(item=>
