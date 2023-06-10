@@ -23,11 +23,17 @@ const CartDetails = () => {
         setShowCancelConfirm(false)
         
     }
+
+    const okHandler = () => {
+        ctx.cartDispatch({
+            type: "clearCart"
+        })
+    }
     
 
     return (
         <Backdrop onClick={clearCartCancel}>
-            {showCancelConfirm && <CancelConfirm clearCartCancel={clearCartCancel} />}
+            {showCancelConfirm && <CancelConfirm clearCartCancel={clearCartCancel} okHandler={okHandler} />}
             <div
                 className={classes.back}
                 onClick={e => {
