@@ -1,0 +1,8 @@
+
+<h1>Hello ejs homepage</h1>
+
+<ul>
+    <% allAnimals.forEach(function(animal){ %>
+        <li><%= animal.name %> - <%= animal.species %></li>
+    <% }) %>
+</ul>
