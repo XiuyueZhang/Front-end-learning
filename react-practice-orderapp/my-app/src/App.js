@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import './App.css';
 import Meals from './components/Meals/Meals';
 import CartContext from './store/CartContext';
@@ -65,6 +65,41 @@ const MEALS_DATA = [
   }
 ]
 
+const cartReducer = (state, action) => {
+  // copy cartData
+  const newCart = {...state}
+
+  switch(action.type){
+    default: 
+      return state;
+    case "addCartItem":
+      // item: the item will be added to the cart
+      if(newCart.items.indexOf(action.item) === -1){
+        newCart.items.push(action.item)
+        action.item.amount = 1
+      }else{
+        action.item.amount += 1
+      }
+      newCart.totalPrice += action.item.price
+      newCart.totleAmount += 1
+      return newCart
+    case "removeCartItem":
+      action.item.amount -= 1
+      if(action.item.amount === 0){
+        newCart.items.splice(newCart.items.indexOf(action.item),1)
+      }
+
+      newCart.totalPrice -= action.item.price
+      newCart.totleAmount -= 1
+      return newCart
+    case "clearCart":
+      newCart.items.forEach(item => delete item.amount)
+      newCart.totalPrice = 0
+      newCart.totleAmount = 0
+      newCart.items = []
+      return newCart
+  }
+}
 
 function App() {
 
@@ -76,42 +111,51 @@ function App() {
 
   // 创建一个state，用来存储购物车的数据
   // 1. 商品：[]  2.商品总数  3. 商品总价
-  const [cartData, setCartData] = useState({
-    items: [],
-    totleAmount: 0,
-    totalPrice: 0
-  })
+  // const [cartData, setCartData] = useState({
+  //   items: [],
+  //   totleAmount: 0,
+  //   totalPrice: 0
+  // })
+
+  const [cartData, cartDispatch] = useReducer(cartReducer, {
+      items: [],
+      totleAmount: 0,
+      totalPrice: 0
+    })
+
+
   // add item to the cart
-  const addItemHandler = (item) => {
-    // item: the item will be added to the cart
-    // copy cartData
-    const newCart = {...cartData}
+  // const addItemHandler = (item) => {
+  //   // item: the item will be added to the cart
+  //   // copy cartData
+  //   const newCart = {...cartData}
     
-    if(newCart.items.indexOf(item) === -1){
-      newCart.items.push(item)
-      item.amount = 1
-    }else{
-      item.amount += 1
-    }
-    newCart.totalPrice += item.price
-    newCart.totleAmount += 1
-    setCartData(newCart)
-  }
-  // add item to the cart
-  const removeItemHandler = (item) => {
-    // item: the item will be added to the cart
-    // copy cartData
-    const newCart = {...cartData}
+  //   if(newCart.items.indexOf(item) === -1){
+  //     newCart.items.push(item)
+  //     item.amount = 1
+  //   }else{
+  //     item.amount += 1
+  //   }
+  //   newCart.totalPrice += item.price
+  //   newCart.totleAmount += 1
+  //   setCartData(newCart)
+  // }
 
-    item.amount -= 1
-    if(item.amount === 0){
-      newCart.items.splice(newCart.items.indexOf(item),1)
-    }
+  // remove item to the cart
+  // const removeItemHandler = (item) => {
+  //   // item: the item will be added to the cart
+  //   // copy cartData
+  //   const newCart = {...cartData}
 
-    newCart.totalPrice -= item.price
-    newCart.totleAmount -= 1
-    setCartData(newCart)
-  }
+  //   item.amount -= 1
+  //   if(item.amount === 0){
+  //     newCart.items.splice(newCart.items.indexOf(item),1)
+  //   }
+
+  //   newCart.totalPrice -= item.price
+  //   newCart.totleAmount -= 1
+  //   // setCartData(newCart)
+  // }
 
   const valueChangeHandler = (keyword) => {
     const lowercaseValue = keyword.toLowerCase();
@@ -123,19 +167,18 @@ function App() {
   
   };
 
-  const clearCartHandler = () => {
-    const newCart = {...cartData}
-    newCart.items.forEach(item => delete item.amount)
-    console.log(newCart)
-    newCart.totalPrice = 0
-    newCart.totleAmount = 0
-    newCart.items = []
+  // const clearCartHandler = () => {
+  //   const newCart = {...cartData}
+  //   newCart.items.forEach(item => delete item.amount)
+  //   newCart.totalPrice = 0
+  //   newCart.totleAmount = 0
+  //   newCart.items = []
     
-    setCartData(newCart)
-  }
+  //   // setCartData(newCart)
+  // }
 
   const myParameter = {
-    ...cartData, addItemHandler, removeItemHandler,clearCartHandler
+    ...cartData, cartDispatch
   }
 
   return (
