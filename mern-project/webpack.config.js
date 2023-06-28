@@ -1,5 +1,5 @@
-const nodeExternals = require("webpack-node-externals")
-const path = require("path")
+const nodeExternals = require("webpack-node-externals");
+const path = require("path");
 
 const typicalReact = {
   rules: [
@@ -17,6 +17,10 @@ const typicalReact = {
       test: /\.css$/,
       use: ["style-loader", "css-loader"],
     },
+    {
+      test: /sharp\/build\/Release\/.+\.node$/,
+      use: "ignore-loader",
+    },
   ],
 };
 
@@ -24,22 +28,22 @@ const clientConfig = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "public"),
-    filename: "main.js"
+    filename: "main.js",
   },
   mode: "development",
-  module: typicalReact
-}
+  module: typicalReact,
+};
 
 const serverConfig = {
   entry: "./server.js",
   output: {
     path: __dirname,
-    filename: "server-compiled.js"
+    filename: "server-compiled.js",
   },
   externals: [nodeExternals()],
   target: "node",
   mode: "production",
-  module: typicalReact
-}
+  module: typicalReact,
+};
 
-module.exports = [clientConfig, serverConfig]
+module.exports = [clientConfig, serverConfig];
