@@ -17,7 +17,6 @@ function App() {
 
     return (
         <div className='container'>
-            <h1><a href="/">&laquo Back to public homepage</a></h1>
             <CreateNewForm setAnimals={setAnimals} />
             <div className="animal-grid">
                 {animals.map(function (animal) {

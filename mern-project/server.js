@@ -45,6 +45,7 @@ app.get("/", async (req, res) => {
             <p>
                 <a href="/admin">Login / manage the animal listings.</a>
             </p>
+            
         </div>
     )
     res.render("home", { generatedHTML })
