@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript drum kit</title>
+    <style>
+        .keys{
+            margin: 100px auto;
+            width: 500px;
+            height: 500px;
+            background-image: url("../images/city.jpeg");
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .key{
+            border: black solid 1px;
+            width: 45px;
+            height: 45px;
+            margin: 3px;
+            background-color: rgba(112, 106, 106,.4);
+            transition: all 2s;
+        }
+
+        .playing{
+            transform: scale(1.1);
+            border-color: #ffc500;
+            box-shadow: 0 0 10px #ffc600;
+        }
+
+        kbd{
+            display: block;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 22px;
+            color:aliceblue
+        }
+
+        span{
+            display: block;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(238, 215, 11);
+            font-weight: 500;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="keys">
+        <div data-key="65" class="key">
+            <kbd>A</kbd>
+            <span class="sound">clap</span>
+        </div>
+        <div data-key="83" class="key">
+            <kbd>S</kbd>
+            <span class="sound">hihat</span>
+        </div>
+        <div data-key="68" class="key">
+            <kbd>D</kbd>
+            <span class="sound">kick</span>
+        </div>
+        <div data-key="70" class="key">
+            <kbd>F</kbd>
+            <span class="sound">openhat</span>
+        </div>
+        <div data-key="71" class="key">
+            <kbd>G</kbd>
+            <span class="sound">boom</span>
+        </div>
+        <div data-key="72" class="key">
+            <kbd>H</kbd>
+            <span class="sound">ride</span>
+        </div>
+        <div data-key="74" class="key">
+            <kbd>J</kbd>
+            <span class="sound">snare</span>
+        </div>
+        <div data-key="75" class="key">
+            <kbd>K</kbd>
+            <span class="sound">tom</span>
+        </div>
+        <div data-key="76" class="key">
+            <kbd>L</kbd>
+            <span class="sound">tink</span>
+        </div>
+    </div>
+
+    <audio data-key="65" src="./sounds/mixkit-retro-game-emergency-alarm-1000.wav"></audio>
+    <audio data-key="83" src="./sounds/mixkit-game-show-suspense-waiting-667.wav"></audio>
+    <audio data-key="68" src="./sounds/mixkit-fast-small-sweep-transition-166.wav"></audio>
+    <audio data-key="70" src="./sounds/mixkit-fast-rocket-whoosh-1714.wav"></audio>
+    <audio data-key="71" src="./sounds/mixkit-classic-alarm-995.wav"></audio>
+    <audio data-key="72" src="./sounds/mixkit-cartoon-toy-whistle-616.wav"></audio>
+    <audio data-key="74" src="./sounds/mixkit-arcade-retro-game-over-213.wav"></audio>
+    <audio data-key="75" src="./sounds/mixkit-air-zoom-vacuum-2608.wav"></audio>
+    <audio data-key="76" src="./sounds/mixkit-retro-game-notification-212.wav"></audio>
+
+    <script>
+
+        function playSound(e){
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+            if(!audio) return; //stop the function running all together
+            audio.currentTime = 0; //rewind to the start
+            audio.play()
+            key.classList.add('playing')
+        }
+
+        function removeTransition(e){
+          if(e.propertyName !== 'transform') return
+          this.classList.remove('playing')
+        }
+
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => key.addEventListener('transitionend',removeTransition))
+        window.addEventListener('keydown', playSound)
+
+    </script>
+</body>
+</html>
