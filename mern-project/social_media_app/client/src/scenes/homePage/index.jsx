@@ -1,7 +1,11 @@
+import Navbar from "scenes/navBar";
+import { Box, useMediaQuery } from "@mui/material";
 
 const HomePage = () => {
     return (
-        <div>homepage</div>
+        <Box >
+            <Navbar />
+        </Box>
     )
 }
 
