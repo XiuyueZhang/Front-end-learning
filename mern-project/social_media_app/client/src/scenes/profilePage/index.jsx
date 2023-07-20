@@ -1,6 +1,12 @@
+import Navbar from "scenes/navBar";
+import { Box, useMediaQuery } from "@mui/material";
+
 const ProfilePage = () => {
     return (
-        <div>profile page</div>
+    <Box >
+        <Navbar />
+        Profile page
+    </Box>
     )
 }
 
