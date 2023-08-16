@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import "reset-css"
+import { Button } from "antd"
+import { Outlet } from "react-router-dom"
+
 
 function App() {
 
@@ -7,6 +9,8 @@ function App() {
     <>
       <div>
         App component
+        <Button type='primary'>Hi, antd button here</Button>
+        <Outlet />
       </div>
     </>
   )
