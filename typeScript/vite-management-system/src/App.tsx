@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { Button } from "antd"
-import { Outlet } from "react-router-dom"
+import { Outlet, Link, Navigate } from "react-router-dom"
 
 
 function App() {
@@ -8,8 +7,6 @@ function App() {
   return (
     <>
       <div>
-        App component
-        <Button type='primary'>Hi, antd button here</Button>
         <Outlet />
       </div>
     </>
