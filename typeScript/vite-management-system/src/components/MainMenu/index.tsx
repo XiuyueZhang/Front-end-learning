@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
     DesktopOutlined,
     FileOutlined,
@@ -29,39 +29,47 @@ function getItem(
 const items: MenuItem[] = [
     getItem('Page1', '/home/page1', <PieChartOutlined />),
     getItem('Page2', '/home/page2', <DesktopOutlined />),
-    getItem('User', 'sub1', <UserOutlined />, [
-        getItem('Tom', '3'),
-        getItem('Bill', '4'),
-        getItem('Alex', '5'),
+    getItem('Team', '/team', <TeamOutlined />, [
+        getItem('Sunny', '/team/admin'),
+        getItem('Leo', '/team/user'),
     ]),
-    getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+    getItem('User', 'sub2', <UserOutlined />, [
+        getItem('Team 1', '6'), getItem('Team 2', '8')
+    ]),
     getItem('About', '/about', <FileOutlined />),
 ];
 
 const MainMenu: React.FC = () => {
 
-    const [openKeys, setOpenKeys] = useState([""]);
+    
     const navigateTo = useNavigate();
+    const currentRoute = useLocation();
 
+    let firstOpenKey: string = "";
+    const segments = currentRoute.pathname.split("/")
+    firstOpenKey = segments.slice(0, -1).join("/");
+
+    const [openKeys, setOpenKeys] = useState([firstOpenKey]);
 
     const menuClick = (e: { key: string }) => {
         navigateTo(e.key)
     }
 
     const handleOpenChange = (keys: string[]) => {
-        // setOpenKeys to the one user clicked
+        // setOpenKeys to the one user clicked item
         setOpenKeys([keys[keys.length - 1]])
     }
 
     return (
         <Menu
             theme="dark"
-            defaultSelectedKeys={['/home/page1']}
+            defaultSelectedKeys={[currentRoute.pathname]}
             mode="inline"
             items={items}
             onClick={menuClick}
             onOpenChange={handleOpenChange}
-            openKeys={openKeys} />
+            openKeys={openKeys} 
+        />
     )
     
 }
